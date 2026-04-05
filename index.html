@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Bói Tình Yêu Skibidi</title>
+    <style>
+        /* CSS nằm ở đây */
+        body { background: #1a1a1a; color: white; text-align: center; font-family: Arial; padding-top: 50px; }
+        .box { border: 2px solid #ffd700; display: inline-block; padding: 20px; border-radius: 15px; background: #333; }
+        input { display: block; margin: 10px auto; padding: 10px; border-radius: 5px; border: none; width: 200px; }
+        button { background: #ff4b2b; color: white; padding: 10px 20px; border: none; cursor: pointer; border-radius: 5px; font-weight: bold; }
+        #result { margin-top: 20px; font-size: 1.2rem; color: #ffd700; min-height: 50px; }
+    </style>
+</head>
+<body>
+
+    <div class="box">
+        <h1>❤️ Love Calculator ❤️</h1>
+        <input type="text" id="name1" placeholder="Tên Nam">
+        <input type="text" id="name2" placeholder="Tên Nữ">
+        <button onclick="calculateLove()">XEM QUẺ</button>
+        <div id="result">Kết quả sẽ hiện ở đây...</div>
+    </div>
+
+    <script>
+        // JAVASCRIPT NẰM Ở ĐÂY
+        function calculateLove() {
+            let n1 = document.getElementById('name1').value.trim().toLowerCase();
+            let n2 = document.getElementById('name2').value.trim().toLowerCase();
+
+            if (n1 === "" || n2 === "") {
+                alert("Nhập tên vào mới bói được chứ!");
+                return;
+            }
+
+            document.getElementById('result').innerHTML = "Đang xem quẻ... 🔮";
+
+            setTimeout(() => {
+                let loveScore;
+                let message = "";
+
+                // Kiểm tra điều kiện "Cưới luôn đi" cho Vinh & Trân
+                let isVinh = n1.includes("vinh") || n2.includes("vinh");
+                let isTran = n1.includes("trân") || n2.includes("trân") || n1.includes("tran") || n2.includes("tran");
+
+                if (isVinh && isTran) {
+                    loveScore = 10000000000000000000000000000;
+                    message = "Tương thích tuyệt đối! Cưới luôn đi chứ chờ gì nữa? 💍✨";
+                } else {
+                    loveScore = Math.floor(Math.random() * 100) + 1;
+                    message = loveScore > 70 ? "Quá là hợp! ❤️" : (loveScore > 40 ? "Cũng tạm ổn! 👌" : "Duyên mình lỡ... 🙊");
+                }
+
+                document.getElementById('result').innerHTML = `Tỉ lệ: ${loveScore}% <br> ${message}`;
+            }, 1500);
+        }
+    </script>
+
+</body>
+</html>
